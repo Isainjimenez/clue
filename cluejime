@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selección de Sospechosos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    .checkbox-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkbox-list label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .checkbox-list input[type="checkbox"] {
+      cursor: pointer;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    button:first-child {
+      background-color: #4CAF50;
+      color: white;
+    }
+    button:first-child:hover {
+      background-color: #45a049;
+    }
+    button:last-child {
+      background-color: #f44336;
+      color: white;
+    }
+    button:last-child:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Quién, con qué y dónde?</h1>
+
+  <div class="section">
+    <h2>Sospechosos</h2>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="sospechoso" value="Verdi"> Verdi</label>
+      <label><input type="checkbox" name="sospechoso" value="Mostaza"> Mostaza</label>
+      <label><input type="checkbox" name="sospechoso" value="Azul"> Azul</label>
+      <label><input type="checkbox" name="sospechoso" value="Morado"> Morado</label>
+      <label><input type="checkbox" name="sospechoso" value="Escarlata"> Escarlata</label>
+      <label><input type="checkbox" name="sospechoso" value="Blanco"> Blanco</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Armas</h2>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="arma" value="Llave inglesa"> Llave inglesa</label>
+      <label><input type="checkbox" name="arma" value="Candelabro"> Candelabro</label>
+      <label><input type="checkbox" name="arma" value="Daga"> Daga</label>
+      <label><input type="checkbox" name="arma" value="Pistola"> Pistola</label>
+      <label><input type="checkbox" name="arma" value="Tubería"> Tubería</label>
+      <label><input type="checkbox" name="arma" value="Soga"> Soga</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Lugares</h2>
+    <div class="checkbox-list">
+      <label><input type="checkbox" name="lugar" value="Baño"> Baño</label>
+      <label><input type="checkbox" name="lugar" value="Estudio"> Estudio</label>
+      <label><input type="checkbox" name="lugar" value="Comedor"> Comedor</label>
+      <label><input type="checkbox" name="lugar" value="Sala de juegos"> Sala de juegos</label>
+      <label><input type="checkbox" name="lugar" value="Garaje"> Garaje</label>
+      <label><input type="checkbox" name="lugar" value="Habitación"> Habitación</label>
+      <label><input type="checkbox" name="lugar" value="Sala"> Sala</label>
+      <label><input type="checkbox" name="lugar" value="Cocina"> Cocina</label>
+      <label><input type="checkbox" name="lugar" value="Patio"> Patio</label>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="mostrarSeleccion()">Mostrar Selección</button>
+    <button onclick="reiniciarSeleccion()">Reiniciar Selección</button>
+  </div>
+
+  <script>
+    function mostrarSeleccion() {
+      const seleccionados = {
+        sospechosos: [],
+        armas: [],
+        lugares: []
+      };
+
+      document.querySelectorAll('input[name="sospechoso"]:checked').forEach(el => seleccionados.sospechosos.push(el.value));
+      document.querySelectorAll('input[name="arma"]:checked').forEach(el => seleccionados.armas.push(el.value));
+      document.querySelectorAll('input[name="lugar"]:checked').forEach(el => seleccionados.lugares.push(el.value));
+
+      alert(`Sospechosos: ${seleccionados.sospechosos.join(', ')}\nArmas: ${seleccionados.armas.join(', ')}\nLugares: ${seleccionados.lugares.join(', ')}`);
+    }
+
+    function reiniciarSeleccion() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+    }
+  </script>
+</body>
+</html>
